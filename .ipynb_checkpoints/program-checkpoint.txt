@@ -1,0 +1,4 @@
+acc = asm_load_const(285)
+acc = asm_read_mem()
+mem_adr = asm_write_mem(150)
+acc = asm_not()
