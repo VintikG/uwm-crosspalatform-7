@@ -43,9 +43,9 @@ cd uwm-crosspalatform-7
 python -m venv venv
 
 .\venv\Scripts\activate
-
+```
 ### Активация окружения для Linux:
-
+```
 python3 -m venv venv 
 source venv/bin/activate
 ```
@@ -61,9 +61,9 @@ python build.py
 
 ```
 dist\UVM_Variant7.exe
-
+```
 ### Запуск приложения на Linux:
-
+```
 chmod +x dist/UVM_Variant7
 ./dist/UVM_Variant7
 ```
