@@ -31,7 +31,7 @@ program:
 ### Установка УВМ на Linux/Windows
 Откройте терминал и выполните команды:
 
-```bash
+```
 git clone https://github.com/VintikG/uwm-crosspalatform-7.git
 
 cd uwm-crosspalatform-7
@@ -39,14 +39,13 @@ cd uwm-crosspalatform-7
 
 ### Активация окружения для Windows:
 
-```bash
+```
 python -m venv venv
 
 .\venv\Scripts\activate
 
 ### Активация окружения для Linux:
 
-```bash
 python3 -m venv venv 
 source venv/bin/activate
 ```
@@ -54,17 +53,17 @@ source venv/bin/activate
 
 ### Запуск сборочного файла:
 
-```bash
+```
 python build.py
 ```
 
 ### Запуск приложения на Windows:
 
-```bash
+```
 dist\UVM_Variant7.exe
 
 ### Запуск приложения на Linux:
 
-```bash
 chmod +x dist/UVM_Variant7
 ./dist/UVM_Variant7
+```
