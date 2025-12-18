@@ -1,49 +1,43 @@
 import subprocess
 import sys
+import importlib.util
 import os
 
-def install_pyinstaller():
-    print("Проверка наличия PyInstaller...")
-    try:
-        import PyInstaller
-        print("PyInstaller уже установлен.")
-    except ImportError:
-        print("Установка PyInstaller...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "pyinstaller"])
+def check_and_install_package(package_import_name, pip_install_name):
+    if importlib.util.find_spec(package_import_name) is None:
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", pip_install_name])
+        except subprocess.CalledProcessError:
+            sys.exit(1)
+
+def check_and_install_tkinter_linux():
+    if sys.platform.startswith("linux"):
+        try:
+            import tkinter
+        except ImportError:
+            try:
+                subprocess.check_call(['sudo', 'apt-get', 'update'])
+                subprocess.check_call(['sudo', 'apt-get', 'install', '-y', 'python3-tk'])
+            except subprocess.CalledProcessError:
+                sys.exit(1)
 
 def build_app():
-    print(f"Начинаю сборку для платформы: {sys.platform}")
-    
-    # Команда для PyInstaller
-    # --onefile: собрать в один файл
-    # --windowed: без консольного окна (для GUI)
-    # --name: имя выходного файла
-    # --add-data: (не нужно, так как мы импортируем python файлы как модули)
-    
     cmd = [
-        "pyinstaller",
+        sys.executable, "-m", "PyInstaller",
         "--noconfirm",
         "--onefile",
         "--windowed",
         "--name", "UVM_Variant7",
         "gui.py"
     ]
-    
     try:
         subprocess.check_call(cmd)
-        print("\n" + "="*40)
-        print("СБОРКА ЗАВЕРШЕНА УСПЕШНО!")
-        print("="*40)
-        
-        dist_folder = os.path.join(os.getcwd(), "dist")
-        print(f"Исполняемый файл находится в папке: {dist_folder}")
-        
     except subprocess.CalledProcessError:
-        print("Ошибка при сборке!")
         sys.exit(1)
 
 if __name__ == "__main__":
-    install_pyinstaller()
+    check_and_install_package("yaml", "PyYAML")
+    check_and_install_package("PyInstaller", "pyinstaller")
+    check_and_install_tkinter_linux()
     build_app()
-
     
