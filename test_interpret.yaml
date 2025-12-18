@@ -1,0 +1,42 @@
+program:
+  - cmd: LOAD_CONST
+    value: 10      
+  - cmd: LOAD_CONST
+    value: 0       
+  - cmd: WRITE_MEM
+    offset: 0       
+
+  - cmd: LOAD_CONST
+    value: 20
+  - cmd: LOAD_CONST
+    value: 1
+  - cmd: WRITE_MEM
+    offset: 0
+
+  - cmd: LOAD_CONST
+    value: 30
+  - cmd: LOAD_CONST
+    value: 2
+  - cmd: WRITE_MEM
+    offset: 0
+
+  - cmd: READ_MEM
+    addr: 0 
+  - cmd: LOAD_CONST
+    value: 10 
+  - cmd: WRITE_MEM
+    offset: 0 
+
+  - cmd: READ_MEM
+    addr: 1     
+  - cmd: LOAD_CONST
+    value: 10     
+  - cmd: WRITE_MEM
+    offset: 1 
+
+  - cmd: READ_MEM
+    addr: 2        
+  - cmd: LOAD_CONST
+    value: 10
+  - cmd: WRITE_MEM
+    offset: 2    
