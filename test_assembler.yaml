@@ -1,9 +1,9 @@
 program:
   - cmd: LOAD_CONST
-    value: 461      # Тест 1: Должно быть A=32, B=461
+    value: 461     
   - cmd: READ_MEM
-    addr: 480       # Тест 2: Должно быть A=54, B=480
+    addr: 480       
   - cmd: WRITE_MEM
-    offset: 627     # Тест 3: Должно быть A=52, B=627
+    offset: 627  
   - cmd: SQRT
-    addr: 635       # Тест 4: Должно быть A=31, B=635
+    addr: 635     
