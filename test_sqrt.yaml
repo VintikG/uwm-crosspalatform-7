@@ -1,0 +1,15 @@
+program:
+  - cmd: LOAD_CONST
+    value: 64       
+  - cmd: LOAD_CONST
+    value: 0     
+  - cmd: WRITE_MEM
+    offset: 0     
+
+  - cmd: SQRT
+    addr: 0         
+  
+  - cmd: LOAD_CONST
+    value: 5        
+  - cmd: WRITE_MEM
+    offset: 0     

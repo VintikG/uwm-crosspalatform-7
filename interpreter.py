@@ -1,5 +1,6 @@
 import sys
 import argparse
+import math 
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
@@ -63,10 +64,20 @@ def execute_program(bytecode):
             memory[target_addr] = value
             
         elif op_name == 'SQRT':
-            pass
+            # ---- Этап 3: Реализация арифметико-логического устройства (АЛУ) ----
+            
+            if operand_b >= MEM_SIZE:
+                print(f"Ошибка: SQRT по адресу {operand_b} вне памяти")
+                sys.exit(1)
+            
+            mem_val = memory[operand_b]
+            
+            res = int(math.isqrt(mem_val))
+            
+            stack.append(res)
             
         else:
-            print(f"Предупреждение: Неизвестный опкод {opcode} по адресу {pc-3}")
+            print(f"Предупреждение: Неизвестный опкод {opcode}")
             
     return memory
 
