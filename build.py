@@ -45,3 +45,5 @@ def build_app():
 if __name__ == "__main__":
     install_pyinstaller()
     build_app()
+
+    

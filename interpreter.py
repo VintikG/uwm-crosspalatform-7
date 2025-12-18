@@ -22,9 +22,7 @@ def execute_program(bytecode):
     stack = []
     pc = 0
     file_len = len(bytecode)
-    
-    print(f"--- Запуск интерпретации (Размер программы: {file_len} байт) ---")
-    
+
     while pc < file_len:
         chunk = bytecode[pc:pc+3]
         if len(chunk) < 3:
@@ -96,21 +94,21 @@ def dump_memory_xml(memory, path, start_addr, end_addr):
         with open(path, "w", encoding="utf-8") as f:
             f.write(xml_str)
     except IOError as e:
-        print(f"Ошибка записи дампа: {e}")
+        print(f"Ошибка записи: {e}")
         sys.exit(1)
 
 def main():
-    parser = argparse.ArgumentParser(description="Interpreter for UVM (Variant 7)")
+    parser = argparse.ArgumentParser(description="Interpreter for UVM")
     parser.add_argument('binary', help="Путь к бинарному файлу")
-    parser.add_argument('result', help="Путь к файлу результата (XML)")
-    parser.add_argument('range', help="Диапазон памяти для дампа (формат: start-end)")
+    parser.add_argument('result', help="Путь к файлу результата")
+    parser.add_argument('range', help="Диапазон памяти для дампа")
     
     args = parser.parse_args()
     
     try:
         start, end = map(int, args.range.split('-'))
     except ValueError:
-        print("Ошибка: Неверный формат диапазона. Используйте формат start-end (например, 0-20)")
+        print("Ошибка: Неверный формат диапазона. Используйте формат start-end '0-20'")
         sys.exit(1)
 
     try:
@@ -123,7 +121,7 @@ def main():
     memory_state = execute_program(bytecode)
     
     dump_memory_xml(memory_state, args.result, start, end)
-    print(f"Интерпретация завершена. Дамп памяти сохранен в '{args.result}'.")
+    print(f"Успешно. Дамп памяти сохранен в '{args.result}'.")
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<memory_dump>
+  <cell address="0">10</cell>
+  <cell address="1">20</cell>
+  <cell address="2">30</cell>
+  <cell address="3">0</cell>
+  <cell address="4">0</cell>
+  <cell address="5">0</cell>
+  <cell address="6">0</cell>
+  <cell address="7">0</cell>
+  <cell address="8">0</cell>
+  <cell address="9">0</cell>
+  <cell address="10">10</cell>
+  <cell address="11">20</cell>
+  <cell address="12">30</cell>
+  <cell address="13">0</cell>
+  <cell address="14">0</cell>
+  <cell address="15">0</cell>
+</memory_dump>
